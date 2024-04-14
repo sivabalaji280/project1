@@ -17,11 +17,11 @@ stages:
       - job: Terraform
         displayName: Terraform
         steps:
-          - task: TerraformInstaller@1
-            inputs:
-              terraformVersion: 'latest'       
-          
-          - script: |
-             cd $(System.DefaultWorkingDirectory)/Terraform
-             terraform init
+        - task: TerraformInstaller@1
+          inputs:
+            terraformVersion: 'latest'       
+        
+        - script: |
+           cd $(System.DefaultWorkingDirectory)/Terraform
+           terraform init
               
