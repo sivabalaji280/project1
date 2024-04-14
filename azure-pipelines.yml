@@ -1,0 +1,27 @@
+# Starter pipeline
+# Start with a minimal pipeline that you can customize to build and deploy your code.
+# Add steps that build, run tests, deploy, and more:
+# https://aka.ms/yaml
+
+trigger: none
+
+pool:
+  vmImage: ubuntu-latest
+
+variables:
+  - group: my_variables
+
+stages:
+  - stage: Build VM using terraform
+    jobs:
+      - job: Terraform
+        displayName: Terraform
+        steps:
+          - task: TerraformInstaller@1
+            inputs:
+              terraformVersion: 'latest'       
+          
+          - script: |
+             cd $(System.DefaultWorkingDirectory)/Terraform
+             terraform init
+              
